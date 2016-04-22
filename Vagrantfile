@@ -7,21 +7,26 @@
 # you're doing.
 Vagrant.configure(2) do |config|
   config.vm.box = "debian/wheezy64"
-  config.vm.synced_folder ".", "/tmp/kwapi-g5k", type: "rsync", rsync__args: ["--verbose", "--archive", "--delete", "-z"]
+  config.vm.synced_folder ".", "/tmp/kwapi-g5k"
 
   config.vm.provision "shell", inline: <<-SHELL
     #!/bin/bash -x
     apt-get update
     apt-get -y --no-install-recommends install python-pip git debhelper python-all wget build-essential
     pip install stdeb
-    # install dependencies
-    cd /tmp/kwapi-g5k
-    git clone https://github.com/lpouillo/kwapi-g5k.git
-    cd kwapi-g5k
-    git checkout network-monitoring-dev
+    # Copy version of kwapi (or clone repository)
+    cp -R /tmp/kwapi-g5k/* .
+    if [ ! -d kwapi-g5k ]
+        then git clone https://github.com/lpouillo/kwapi-g5k.git -b network-monitoring-dev
+    fi
+    cd kwapi-g5k/
+    # Patch setup file and init script
     cp ../setup.py .
     cp ../kwapi etc/init/
+    # Build packet
     python setup.py --command-packages=stdeb.command bdist_deb
+    # Export builded packet
+    find . -name *.deb -type f -exec cp {} /tmp/kwapi-g5k/ \\;
   SHELL
 
 end
