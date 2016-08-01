@@ -20,6 +20,7 @@ Vagrant.configure(2) do |config|
         then git clone https://github.com/lpouillo/kwapi-g5k.git -b network-monitoring-dev
     fi
     cd kwapi-g5k/
+    git pull
     # Patch setup file and init script
     cp ../setup.py .
     cp ../kwapi etc/init/
