@@ -21,7 +21,7 @@ import setuptools
 setuptools.setup(
 
     name='kwapi-g5k',
-    version='1.1.4',
+    version='1.1.5-3',
 
     description='Grid5000 Monitoring Framework',
 
@@ -45,8 +45,7 @@ setuptools.setup(
 
     packages=setuptools.find_packages(exclude=['tests*']),
     include_package_data=True,
-    package_data={'kwapi.plugins.live': ['kwapi/plugins/live/templates/*', 'kwapi/plugins/live/static/*.css', 'kwapi/plugins/live/static/*.png', 'kwapi/plugins/live/static/*.jpg', 'kwapi/plugins/live/static/*.gif', 'kwapi/plugins/live/static/*.js', 'kwapi/plugins/live/static/select2/*'],
-                  'kwapi.plugins.rrd':  ['kwapi/plugins/live/templates/*', 'kwapi/plugins/live/static/*.css', 'kwapi/plugins/live/static/*.png', 'kwapi/plugins/live/static/*.jpg', 'kwapi/plugins/live/static/*.js', 'kwapi/plugins/live/static/select2/*']},
+    package_data={'kwapi-g5k': ['kwapi/plugins/live/templates/*', 'kwapi/plugins/live/static/*.css', 'kwapi/plugins/live/static/*.png', 'kwapi/plugins/live/static/*.jpg', 'kwapi/plugins/live/static/*.gif', 'kwapi/plugins/live/static/*.js', 'kwapi/plugins/live/static/select2/*', 'kwapi/plugins/live/templates/*', 'kwapi/plugins/live/static/*.css', 'kwapi/plugins/live/static/*.png', 'kwapi/plugins/live/static/*.jpg', 'kwapi/plugins/live/static/*.js', 'kwapi/plugins/live/static/select2/*']},
 
     scripts=['bin/kwapi-g5k-conf', 'bin/kwapi-g5k-check'],
 

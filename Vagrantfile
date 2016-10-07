@@ -25,7 +25,8 @@ Vagrant.configure(2) do |config|
     cp ../setup.py .
     cp ../kwapi etc/init/
     # Build packet
-    python setup.py --command-packages=stdeb.command bdist_deb
+    rm -rf deb_dist/*
+    export DISTUTILS_DEBUG="YES"; python setup.py --command-packages=stdeb.command bdist_deb
     # Export builded packet
     find . -name *.deb -type f -exec cp {} /tmp/kwapi-g5k/ \\;
   SHELL
