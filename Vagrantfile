@@ -17,7 +17,7 @@ Vagrant.configure(2) do |config|
     # Copy version of kwapi (or clone repository)
     cp -R /tmp/kwapi-g5k/* .
     if [ ! -d kwapi-g5k ]
-        then git clone https://github.com/lpouillo/kwapi-g5k.git -b network-monitoring-dev
+        then git clone https://github.com/grid5000/kwapi-g5k.git -b network-monitoring-dev
     fi
     cd kwapi-g5k/
     git pull
