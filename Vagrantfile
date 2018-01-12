@@ -31,4 +31,4 @@ Vagrant.configure(2) do |config|
     find . -name *.deb -type f -exec cp {} /tmp/kwapi-g5k/ \\;
   SHELL
 
-zsh:1: command not found: q
+end
